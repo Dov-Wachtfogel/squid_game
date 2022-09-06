@@ -13,7 +13,7 @@ def main():
         while len(num) != 4 and not num.isnumeric():
             num = str(input('enter a num to check: '))
         s.send(num.encode())
-        ans = s.recv(32).decode()
+        ans = s.recv(128).decode()
         if ans == 'WON' or ans == 'LOSE':
             print('YOU ' + ans)
             play = False

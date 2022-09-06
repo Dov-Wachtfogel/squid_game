@@ -21,7 +21,7 @@ def main():
                 play = False
                 c.send('WON'.encode())
                 c.close()
-            elif rounds <= 10:
+            elif rounds >= 10:
                 play = False
                 c.close()
                 c.send('LOSE'.encode())
