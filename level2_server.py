@@ -11,11 +11,11 @@ def client_handler(c, num: digits4.digits4):
     while play:
         player_num = c.recv(32).decode()
         rounds += 1
-        ans = num.check_num(player_num)
         if num.someone_win:
             play = False
             c.send('LOSE'.encode())
             c.close()
+        ans = num.check_num(player_num)
         if ans[:2] == '4A':
             play = False
             c.send('WON'.encode())
@@ -37,7 +37,7 @@ def start_server():
     ServerSocket = socket.socket()
     num = digits4.digits4()
     try:
-        ServerSocket.bind((PORT))
+        ServerSocket.bind(('', PORT))
     except socket.error as e:
         print(str(e))
     print(f'Server is listing on the port {PORT}...')
